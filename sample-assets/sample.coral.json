@@ -1,0 +1,18 @@
+{
+  "format": "coral.project",
+  "version": 1,
+  "name": "hero",
+  "sources": [
+    { "kind": "folder", "path": "art/hero", "recursive": true, "include": ["*.png"] },
+    { "kind": "aseprite", "path": "art/fx/spark.aseprite", "layers": "visible" }
+  ],
+  "sprites": { "hero_idle_0": { "pivot": [0.5, 1.0], "nineSlice": null } },
+  "animations": [],
+  "hitboxes": { "hero_attack_3": [{ "kind": "hitbox", "rect": [22, 22, 10, 6], "name": "sword" }] },
+  "pack": { "maxSize": 1024, "padding": 2, "extrude": 1 },
+  "exports": [
+    { "target": "jsonHash", "out": "build/json" },
+    { "target": "spine", "out": "build/spine" }
+  ],
+  "watch": { "autoStart": false }
+}
