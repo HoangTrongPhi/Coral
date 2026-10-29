@@ -1,7 +1,7 @@
 # Coral — Progress
 
 ## Status
-- Current phase: P11 — Polish (code done; waiting on the user for engine checks and the release)
+- Current phase: P11 — Polish (v0.1.0 released 2026-10-29; engine checks by the user pending)
 - Last session: 2026-10-29 — template upgrade (Abyss T1–T5) then Coral P0–P11 in one session
 - `npm run check`: green (typecheck, 32 commands mocked, 52 Rust tests; 3 more `#[ignore]`: 2 benchmarks, sample generator)
 - Release build: `npm run tauri build` OK; `coral.exe --help` and `coral.exe pack sample-assets/sample.coral.json` checked (see below)
@@ -12,7 +12,7 @@
 - [x] P2 Packer — own MaxRects (5 heuristics, rotation), size search, multi-page, padding, extrude, bleed; property test (500 random rects, 5 configurations); benchmark 1000 × 64 px < 1 ms release (target < 300 ms)
 - [x] P3 Exporters — JSON Hash, JSON Array, Godot `.tres`, Unity `.meta`, Spine `.atlas`, atomic writes, dry run — **engine import by the user still to do** (see next steps)
 - [x] P4 CLI + watch — `coral pack` (+ `--target --dry-run --report --watch --fail-on --quiet`), watch action `packProject`, `parses_flags` / `runs_pack` / IPC watch test; re-pack of 200 cached sprites ≈ 35 ms (target < 1 s)
-- [x] P5 UI Pack + mock — drop → unsaved project, atlas view 25–800 %, hover / select, settings, exports, Pack & Export (dry run → confirm), JobProgress, WatchToggle; release 0.1.0 **not published** (needs the user's go-ahead)
+- [x] P5 UI Pack + mock — drop → unsaved project, atlas view 25–800 %, hover / select, settings, exports, Pack & Export (dry run → confirm), JobProgress, WatchToggle; **v0.1.0 released** 2026-10-29: https://github.com/HoangTrongPhi/Coral/releases/tag/v0.1.0 (4 files per the release standard); Abyss catalog set to `available`, revision 3
 - [x] P6 Slice — grid / auto (6-shape ordering test), rect editing, names, pivots, 9-slice, PNGs / JSON / Unity meta
 - [x] P7 Animate — player, durations, onion skin, pivot, hitboxes per frame (copy to next), FORMATS.md#hitboxes with Godot / Unity snippets
 - [x] P8 Flipbook — natural sort, range / step, suggested grid, Lanczos3, JSON; 64 frames → 8×8 order test
@@ -42,9 +42,8 @@
     `src-tauri/tests/fixtures/unity/` would let the test compare against it.
   - Spine / libGDX: load `hero.atlas` (offsets, rotated regions).
   - Phaser 3 / PixiJS: load the JSON Hash (rotated frames).
-- Release `0.1.0` (spec P5): `npm run release -- -Version 0.1.0 -Notes "…"`, then `-Publish`, `git init`,
-  `gh repo create HoangTrongPhi/Coral` and the catalog status — only with the user's go-ahead. Back up
-  `%USERPROFILE%\.tauri\coral.key`.
+- Back up `%USERPROFILE%\.tauri\coral.key`: without it no installed copy can be updated.
+- Abyss `catalog/catalog.json` (coral `available`, revision 3) is changed locally; launchers see it once Abyss is pushed.
 - Aseprite reader: blend modes other than Normal are merged as Normal (warn); tilemap layers skipped;
   not yet tried on files from the latest Aseprite release (fixture wanted).
 - PSD: the `psd` crate reads pixel layers only (no effects / smart objects); group visibility is not
