@@ -1,6 +1,6 @@
 [package]
 name = "coral"
-version = "0.1.0"
+version = "0.1.1"
 description = "Coral — Sprite atlas & 2D animation toolkit"
 authors = ["Phineas"]
 edition = "2021"

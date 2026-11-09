@@ -2,7 +2,9 @@
 
 All user-visible changes. Newest first; one section per released version.
 
-## Unreleased (0.1.0 candidate)
+## Unreleased
+
+## 0.1.1 — 2026-11-09
 
 - **Help / Hướng dẫn** (`F1`, the **?** button in the header, or `Ctrl+K` → "Help / Hướng dẫn"): an
   in-app usage guide in Vietnamese and English — Getting started (layout, drag & drop, projects, how
@@ -17,6 +19,9 @@ All user-visible changes. Newest first; one section per released version.
 - **Fix — Pixel → Bleed** no longer overwrites the inputs without a `.bak` when the output folder is
   empty ("next to each input") or is the inputs' own folder: outputs are now `<name>_bleed.png`. *In
   place* still overwrites, with a `.bak` first. Same for `coral bleed --out`.
+
+## 0.1.0 — 2026-10-29
+
 - **Pack**: sources from folders (PNG / TGA / GIF), Aseprite (merged or per layer, tags, frame durations,
   slice pivot and 9-slice), PSD (per layer or flattened) and GIF; alpha trim, duplicate merging
   (aliases), MaxRects packing with 5 heuristics, padding, extrusion, rotation, power-of-two / square
