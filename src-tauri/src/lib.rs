@@ -34,6 +34,7 @@ fn configure<R: Runtime>(builder: Builder<R>) -> Builder<R> {
             commands::app_cmd::ui_log,
             commands::app_cmd::cancel_job,
             commands::app_cmd::open_url,
+            commands::app_cmd::open_user_guide,
             commands::app_cmd::reveal_in_explorer,
             commands::app_cmd::get_settings,
             commands::app_cmd::set_settings,

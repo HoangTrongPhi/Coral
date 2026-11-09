@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "typecheck": "tsc -b",
+    "guide": "node ../Abyss/scripts/user-guide.mjs",
     "tauri": "tauri",
     "release": "powershell -ExecutionPolicy Bypass -File \"../Abyss/scripts/release.ps1\" -App .",
     "check:mock": "node scripts/check-mock.mjs",

@@ -4,12 +4,19 @@ import { runActiveModule } from "../lib/rerun";
 import { useAppStore } from "../stores/appStore";
 import { useProjectStore } from "../stores/projectStore";
 
-/** Ctrl+K palette, Ctrl+` log drawer, Ctrl+, settings, Ctrl+1…9 module switch, F5 run again,
+/** F1 help, Ctrl+K palette, Ctrl+` log drawer, Ctrl+, settings, Ctrl+1…9 module switch, F5 run again,
  * Ctrl+O / Ctrl+S / Ctrl+Shift+S project. */
 export function useGlobalHotkeys() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const s = useAppStore.getState();
+      if (e.key === "F1" && !e.ctrlKey && !e.metaKey && !e.altKey && !e.shiftKey) {
+        // Opens on the current module's topic (AppHelp); F1 again closes.
+        e.preventDefault();
+        s.setPaletteOpen(false);
+        s.setHelpOpen(!s.helpOpen);
+        return;
+      }
       if (e.key === "F5" && !e.ctrlKey && !e.altKey) {
         // Also stops the webview from reloading the page.
         e.preventDefault();

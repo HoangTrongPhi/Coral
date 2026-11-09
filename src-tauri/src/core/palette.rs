@@ -386,7 +386,9 @@ pub struct BleedOptions {
 
 pub fn bleed_files(o: &BleedOptions, ctx: &RunCtx) -> WriteReport {
     let started = Instant::now();
-    let (w, _) = batch(&o.paths, &o.output, o.dry_run, "", ctx, &|mut img| {
+    // `_bleed` keeps the output from landing on the input when the folder is empty (next to each
+    // input) or is the input's own folder; only `InPlace` overwrites, and it makes a `.bak` first.
+    let (w, _) = batch(&o.paths, &o.output, o.dry_run, "_bleed", ctx, &|mut img| {
         bleed::alpha_bleed(&mut img, 0);
         (img, None)
     });
@@ -457,5 +459,21 @@ mod tests {
         assert_eq!(image_io::load(&PathBuf::from(out).join("four_x4.png")).unwrap().dimensions(), (16, 4));
         let b = quiet_ctx(|ctx| bleed_files(&BleedOptions { paths: vec![src.to_string_lossy().into()], output: OutputMode::InPlace, dry_run: false }, ctx));
         assert!(b.ok && b.files.iter().any(|f| f.kind == "backup") && src.with_extension("png.bak").exists());
+    }
+
+    #[test]
+    fn bleed_next_to_input_never_overwrites_it() {
+        let d = tempfile::tempdir().unwrap();
+        let src = four_colours(d.path());
+        let before = std::fs::read(&src).unwrap();
+        let next_to = OutputMode::Folder { path: String::new() };
+        let same_dir = OutputMode::Folder { path: src.parent().unwrap().to_string_lossy().into_owned() };
+        for output in [next_to, same_dir] {
+            let b = quiet_ctx(|ctx| bleed_files(&BleedOptions { paths: vec![src.to_string_lossy().into()], output, dry_run: false }, ctx));
+            assert!(b.ok, "{:?}", b.issues);
+            assert!(b.files.iter().all(|f| f.kind != "backup" && PathBuf::from(&f.path) != src));
+            assert!(src.with_file_name("four_bleed.png").exists());
+        }
+        assert_eq!(std::fs::read(&src).unwrap(), before, "input untouched");
     }
 }

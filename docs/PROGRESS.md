@@ -18,7 +18,7 @@
 - [x] P8 Flipbook — natural sort, range / step, suggested grid, Lanczos3, JSON; 64 frames → 8×8 order test
 - [x] P9 Pixel — upscale, palette extract / `.hex` `.gpl` `.pal`, OKLab remap (4-colour test), swap tables (saved in the project), bleed
 - [x] P10 Normal 2D — luminance / alpha bevel, blur, Sobel, OpenGL / DirectX, direction test, normal atlas with the same rects, WebGL preview
-- [ ] P11 Polish — user guide written (`docs/user-guide/`, no screenshots yet); 2000-sprite open-time check and the v0.2.0 release not done
+- [ ] P11 Polish — user guide written (`docs/user-guide/`, no screenshots yet); in-app Help / Hướng dẫn (F1, VI / EN, `src/help/topics.ts` on `@abyss/ui` `HelpPanel`) added 2026-11-09; 2000-sprite open-time check and the v0.2.0 release not done
 
 ## Decisions (answers to the spec's open questions)
 - 2026-10-29 — Q1 Unity: **Unity 6**; no real `.meta` fixture provided yet (user)

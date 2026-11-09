@@ -13,4 +13,5 @@ input, with a suffix) or *In place* (each input copied to `.bak` first).
   touches the source. Click a palette swatch to add a pair, then pick the target colour. *Save to
   project* stores the tables in the open project; *From project* loads them.
 - **Bleed**: transparent pixels take their neighbours' colour, alpha stays 0 — no dark fringes with
-  filtering or mipmaps.
+  filtering or mipmaps. Written as `<name>_bleed.png` (next to each input or in the output folder);
+  choose *In place* to change the inputs themselves (`.bak` first).

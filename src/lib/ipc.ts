@@ -45,6 +45,7 @@ export const ipc = {
   cancelJob: (jobId: number) => invoke<boolean>("cancel_job", { jobId }),
   openUrl: (url: string) => invoke<void>("open_url", { url }),
   revealInExplorer: (path: string) => invoke<void>("reveal_in_explorer", { path }),
+  openUserGuide: (lang: string) => invoke<void>("open_user_guide", { lang }),
   getSettings: () => invoke<AppSettings>("get_settings"),
   setSettings: (settings: AppSettings) => invoke<void>("set_settings", { settings }),
 

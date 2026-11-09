@@ -73,7 +73,11 @@
     "createUpdaterArtifacts": true,
     "publisher": "Phineas",
     "copyright": "© 2026 Hoàng Trọng Phi",
-    "homepage": "https://github.com/HoangTrongPhi/Coral"
+    "homepage": "https://github.com/HoangTrongPhi/Coral",
+    "resources": {
+      "../docs/user-guide/Coral_User_Guide_vi.pdf": "user-guide/Coral_User_Guide_vi.pdf",
+      "../docs/user-guide/Coral_User_Guide_en.pdf": "user-guide/Coral_User_Guide_en.pdf"
+    }
   },
   "plugins": {
     "updater": {

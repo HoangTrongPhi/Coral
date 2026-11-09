@@ -14,6 +14,9 @@ interface AppState {
   setAboutOpen: (open: boolean) => void;
   settingsOpen: boolean;
   setSettingsOpen: (open: boolean) => void;
+  /** Help panel (F1), opened on the current module's topic. */
+  helpOpen: boolean;
+  setHelpOpen: (open: boolean) => void;
 
   logDrawerOpen: boolean;
   toggleLogDrawer: (open?: boolean) => void;
@@ -42,6 +45,8 @@ export const useAppStore = create<AppState>()((set) => ({
   setAboutOpen: (aboutOpen) => set({ aboutOpen }),
   settingsOpen: false,
   setSettingsOpen: (settingsOpen) => set({ settingsOpen }),
+  helpOpen: false,
+  setHelpOpen: (helpOpen) => set({ helpOpen }),
 
   logDrawerOpen: false,
   toggleLogDrawer: (open) => set((s) => ({ logDrawerOpen: open ?? !s.logDrawerOpen })),

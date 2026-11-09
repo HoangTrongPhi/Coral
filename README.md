@@ -3,7 +3,7 @@
 Sprite atlas & 2D animation toolkit — part of the Phineas suite, installed and updated by [Abyss](https://github.com/HoangTrongPhi/Abyss).
 Tauri 2 + Rust + React, Studio Dark UI from `@abyss/ui`. What it does and how it is built:
 [docs/SPEC.md](docs/SPEC.md); where it stands: [docs/PROGRESS.md](docs/PROGRESS.md); file formats:
-[docs/FORMATS.md](docs/FORMATS.md); how to use each module: [docs/user-guide/](docs/user-guide/README.md).
+[docs/FORMATS.md](docs/FORMATS.md); how to use each module: [docs/user-guide/](docs/user-guide/README.md) (also as a PDF, VI / EN: `npm run guide`).
 
 | Module | |
 |---|---|
@@ -21,6 +21,7 @@ npm install
 npm run check          # typecheck + mock coverage + cargo test: green before every hand-off
 npm run dev            # UI only; open http://localhost:1452/?mock for the fake backend
 npm run tauri dev      # desktop app with hot reload
+npm run guide          # docs/user-guide/Coral_User_Guide_{vi,en}.pdf from src/help/topics.ts (after Help changes)
 npm run tauri build    # release build (unsigned updater artifacts fail; use npm run release)
 npm run release -- -Version 0.1.0 -Notes "First release" [-Publish]
 cargo test --manifest-path src-tauri/Cargo.toml gen_sample_assets -- --ignored   # sample-assets/

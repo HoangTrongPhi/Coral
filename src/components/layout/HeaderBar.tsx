@@ -1,15 +1,16 @@
 import { PillBadge } from "@abyss/ui";
-import { Search } from "lucide-react";
+import { CircleHelp, Search } from "lucide-react";
 import type { ReactNode } from "react";
 import { moduleById } from "../../lib/modules";
 import { useAppStore } from "../../stores/appStore";
 import { useProjectStore } from "../../stores/projectStore";
 import { useUpdateStore } from "../../stores/updateStore";
 
-/** App name, module, an optional project / module slot (`children`), search, version, `via Abyss`, Update. */
+/** App name, module, an optional project / module slot (`children`), search, help, version, `via Abyss`, Update. */
 export function HeaderBar({ children }: { children?: ReactNode }) {
   const activeTab = useAppStore((s) => s.activeTab);
   const setPaletteOpen = useAppStore((s) => s.setPaletteOpen);
+  const setHelpOpen = useAppStore((s) => s.setHelpOpen);
   const info = useAppStore((s) => s.appInfo);
   const update = useUpdateStore();
   const mod = moduleById(activeTab);
@@ -40,6 +41,9 @@ export function HeaderBar({ children }: { children?: ReactNode }) {
         <span className="flex-1">Search actions…</span>
         <kbd>Ctrl</kbd>
         <kbd>K</kbd>
+      </button>
+      <button type="button" className="icon-btn" title="Help / Hướng dẫn (F1)" aria-label="Help" onClick={() => setHelpOpen(true)}>
+        <CircleHelp className="size-4" strokeWidth={1.75} />
       </button>
       {update.phase === "available" && (
         <button type="button" className="btn btn-primary" onClick={() => void update.installAndRestart()}>

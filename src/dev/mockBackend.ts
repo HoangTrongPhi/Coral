@@ -352,6 +352,9 @@ if (import.meta.env.DEV && new URLSearchParams(location.search).has("mock")) {
         case "open_url":
           window.open(a.url, "_blank", "noopener");
           return null;
+        case "open_user_guide":
+          console.info("mockBackend: open user guide", a.lang);
+          return null;
         case "reveal_in_explorer":
           console.info("mockBackend: reveal", a.path);
           return null;
